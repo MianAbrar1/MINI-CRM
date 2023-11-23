@@ -217,7 +217,7 @@ to get the desired effect
               <li class="nav-item">
                 <a href="employees/create" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Register as an Employee</p>
+                  <p>Register as  Employee</p>
                 </a>
               </li>
             </li>
