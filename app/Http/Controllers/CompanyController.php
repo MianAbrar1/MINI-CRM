@@ -14,7 +14,7 @@ class CompanyController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Company::select('id','name','email','website')->get();
+            $data = Company::select('id','name','email','website','logo')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
@@ -23,7 +23,8 @@ class CompanyController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('Company');
+
+        return view('company');
     }
 
     public function addCompany(Request $request)

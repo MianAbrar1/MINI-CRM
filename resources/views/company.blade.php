@@ -47,6 +47,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Website</th>
+                        <th>Logo</th>
                         <th width="100px">Action</th>
                     </tr>
                 </thead>
@@ -89,5 +90,24 @@
                 })
             });
         });
+    </script>
+@endsection
+@section('js2')
+    <script type="text/javascript">
+         $(function () {
+    var table = $('.user_datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('companies.index') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'website', name: 'website'},
+            {data: 'logo', name: 'logo'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    });
+  });
     </script>
 @endsection

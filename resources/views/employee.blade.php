@@ -98,3 +98,23 @@
         });
     </script>
 @endsection
+@section('js2')
+    <script type="text/javascript">
+         $(function () {
+    var table = $('.user_datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('employees.index') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'first_name', name: 'first_name'},
+            {data: 'last_name', name: 'last_name'},
+            {data: 'company_name', name: 'company_name'},
+            {data: 'email', name: 'email'},
+            {data: 'phone', name: 'phone'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    });
+  });
+    </script>
+@endsection

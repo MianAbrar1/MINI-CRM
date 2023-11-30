@@ -7,15 +7,26 @@ use Illuminate\Http\Request;
 use App\Models\Employee; // Import the Employee model
 use App\Models\Company; // Import the Company model
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-         // Fetch all employees
+        if ($request->ajax()) {
+            $data = Employee::select('id','first_name','last_name','email','company_name','phone')->get();
+            return Datatables::of($data)->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('employee');
     }
     public function addEmployee(Request $request)

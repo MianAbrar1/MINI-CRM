@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\companycontroller as ControllersCompanycontroller;
 use App\Http\Controllers\EmployeeController;
 use App\Models\Company;
+use App\Models\Employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,6 @@ Route::resource('employees', EmployeeController::class);
 // Route::resource('employees', 'EmployeeController');
 
 Route::get('companies',[CompanyController::class, 'index'])->name('companies.index');
+Route::get('employees',[EmployeeController::class, 'index'])->name('employees.index');
 Route::post('add-employee',[EmployeeController::class,'addEmployee'])->name('addEmployee');
 Route::post('add-company',[Companycontroller::class,'addCompany'])->name('addCompany');
