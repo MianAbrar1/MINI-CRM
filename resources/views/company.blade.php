@@ -4,37 +4,52 @@
 @endsection
 
 @section('form')
-<div class="col-md-6">
-    <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Add New</h3>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add New Company
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Company</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-<form id="my-form">
-    @csrf <!-- CSRF protection --><div class="card-body">
-        <div class="form-group">
-        <label for="first_name">Name:</label>
-        <input type="text" id="name" class="form-control" name="name">
+        <div class="modal-body">
+            <form id="my-form">
+                @csrf <!-- CSRF protection --><div class="card-body">
+                    <div class="form-group">
+                    <label for="first_name">Name:</label>
+                    <input type="text" id="name" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                    <label for="website">Website:</label>
+                    <input type="text" id="website" class="form-control" name="website">
+                    </div>
+                    <!-- Other employee details: Company, Email, Phone -->
+                    <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                <label for="logo">logo:</label>
+                <input type="file" id="file" class="form-control" name="file">
+                    </div>
+                    <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">Add Company</button>
+                    </div>
+                </div>
+            </form>
+            <span id="output"></span>
         </div>
-        <div class="form-group">
-        <label for="website">Website:</label>
-        <input type="text" id="website" class="form-control" name="website">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
-        <!-- Other employee details: Company, Email, Phone -->
-        <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-    <label for="logo">logo:</label>
-    <input type="file" id="file" class="form-control" name="file">
-        </div>
-        <div class="card-footer">
-        <button type="submit" class="btn btn-primary" id="btnSubmit">Add Company</button>
-        </div>
+      </div>
     </div>
-</form>
-    </div>
-</div>
+  </div>
 @endsection
 @section('table')
 <div class="container">

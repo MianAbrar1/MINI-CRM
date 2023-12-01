@@ -4,45 +4,59 @@
 @endsection
 
 @section('form')
-<div class="col-md-6">
-    <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Add New</h3>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add New Employee
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Employee</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-<form id="my-form">
-    @csrf <!-- CSRF protection --><div class="card-body">
-        <div class="form-group">
-            <label for="first_name">First Name:</label>
-            <input type="text" id="first_name" class="form-control" name="first_name">
-            </div>
-            <div class="form-group">
-            <label for="last_name">Last Name:</label>
-            <input type="text" id="last_name" class="form-control" name="last_name">
-            </div>
-            <!-- Other employee details: Company, Email, Phone -->
+        <div class="modal-body">
+            <form id="my-form">
+                @csrf <!-- CSRF protection --><div class="card-body">
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" class="form-control" name="first_name">
+                        </div>
+                        <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" id="last_name" class="form-control" name="last_name">
+                        </div>
+                        <!-- Other employee details: Company, Email, Phone -->
 
-            <!-- Example: Company selection -->
+                        <!-- Example: Company selection -->
 
-            <div class="form-group">
-        <label for="company">Company:</label>
-        <input type="text" id="company" class="form-control" name="company_name">
-            </div>
-            <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" class="form-control" name="email">
-            </div>
-            <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" class="form-control" name="phone">
-            </div>
-            <div class="card-footer">
-            <button type="submit" class="btn btn-primary" id="btnSubmit">Add Employee</button>
-            </div>
+                        <div class="form-group">
+                    <label for="company">Company:</label>
+                    <input type="text" id="company" class="form-control" name="company_name">
+                        </div>
+                        <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" class="form-control" name="phone">
+                        </div>
+                        <div class="card-footer">
+                        <button type="submit" class="btn btn-primary" id="btnSubmit">Add Employee</button>
+                        </div>
+                </div>
+            </form>
+            <span id="output"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
-</form>
-<span id="output"></span>
-    </div>
-</div>
+  </div>
 @endsection
 @section('table')
 <div class="container">

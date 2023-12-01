@@ -20,7 +20,7 @@ class EmployeeController extends Controller
             $data = Employee::select('id','first_name','last_name','email','company_name','phone')->get();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:void(0)" class="btn btn-primary btn-sm">View</a>';
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
@@ -41,4 +41,4 @@ class EmployeeController extends Controller
 
     return response()->json(['res'=>'Employee added Successfully']);
        }
-}
+    }
