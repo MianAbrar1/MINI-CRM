@@ -51,3 +51,9 @@ Route::get('companies',[CompanyController::class, 'index'])->name('companies.ind
 Route::get('employees',[EmployeeController::class, 'index'])->name('employees.index');
 Route::post('add-employee',[EmployeeController::class,'addEmployee'])->name('addEmployee');
 Route::post('add-company',[Companycontroller::class,'addCompany'])->name('addCompany');
+Route::post('delete-company',[Companycontroller::class,'destroy']);
+
+//Route::get('/ajax_upload', 'AjaxUploadController@index');
+
+Route::post('/ajax_upload/action', 'Companycontroller@action')->name('ajaxupload.action');
+

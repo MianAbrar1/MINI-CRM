@@ -19,26 +19,54 @@ class EmployeeController extends Controller
         if ($request->ajax()) {
             $data = Employee::select('id','first_name','last_name','email','company_name','phone')->get();
             return Datatables::of($data)->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $btn;
-                })
+            ->addColumn('action', function($row){
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+                 return $btn;
+         })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
         return view('employee');
     }
-    public function addEmployee(Request $request)
+    public function store(Request $request)
     {
-        $employee = new Employee();
-    $employee->first_name = $request->input('first_name');
-    $employee->last_name = $request->input('last_name');
-    $employee->company_name = $request->input('company_name');
-    $employee->email = $request->input('email');
-    $employee->phone = $request->input('phone');
-    $employee->save();
 
-    return response()->json(['res'=>'Employee added Successfully']);
+        Employee::updateOrCreate([
+            'id' => $request->employee_id
+        ],
+        [
+            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'company_name' => $request->company_name,
+            'email' => $request->email,
+            'phone' => $request->phone
+        ]);
+
+return response()->json(['success'=>'Employee saved successfully.']);
+        //$employee = new Employee();
+    //$employee->first_name = $request->input('first_name');
+    //$employee->last_name = $request->input('last_name');
+ //   $employee->company_name = $request->input('company_name');
+   // $employee->email = $request->input('email');
+   // $employee->phone = $request->input('phone');
+   // $employee->save();
+
+    //return response()->json(['res'=>'Employee added Successfully']);
        }
+
+       public function edit($id)
+    {
+        $employee = Employee::find($id);
+        return response()->json($employee);
+    }
+
+    public function destroy($id)
+    {
+        Employee::find($id)->delete();
+
+        return response()->json(['success'=>'Employee deleted successfully.']);
+    }
     }
