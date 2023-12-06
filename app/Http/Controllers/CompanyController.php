@@ -54,7 +54,7 @@ class CompanyController extends Controller
             $file = $request->file('logo');
        $file = $request->file('logo');
         $filename = $file->getClientOriginalName();
-        $filePath = $file->storeAs('images',$filename,'public');
+        $filePath = $file->move('images',$filename,'public');
         }
         Company::updateOrCreate(
             ['id' => $request->company_id],
