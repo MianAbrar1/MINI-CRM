@@ -55,5 +55,4 @@ Route::post('delete-company',[Companycontroller::class,'destroy']);
 
 //Route::get('/ajax_upload', 'AjaxUploadController@index');
 
-Route::post('/ajax_upload/action', 'Companycontroller@action')->name('ajaxupload.action');
 

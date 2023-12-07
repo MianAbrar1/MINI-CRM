@@ -4,6 +4,7 @@
 @endsection
 
 @section('form')
+<h1 class="display-4 mb-20 text-blue">EMPLOYEES</h1>
 <a class="btn btn-success" href="javascript:void(0)" id="createNewEmployee"> Add New Employee</a>
 @endsection
 @section('table')
