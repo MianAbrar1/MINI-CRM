@@ -65,28 +65,13 @@ class CompanyController extends Controller
                 'logo' => isset($filePath) ? $filePath : $request->logo,
             ]
         );
-      //  dd($file);
        return response()->json(['res'=>'Company Created Successfully']);
     }
-
     public function edit($id)
     {
         $company = Company::find($id);
         return response()->json($company);
     }
-
-   // public function store(Request $request){
-     //   $file = $request->file('file');
-       // $filename = time().''.$file->getClientOriginalName();
-        //$filePath = $file->storeAs('image',$filename,'public');
-       // Company::updateOrCreate(['id'=>$request->company_id],
-   // [   'name' => $request->name,
-     //   'email' => $request->email,
-     //   'website' => $request->website,
-     //   'logo' => $filePath
-    //]);
-   // return response()->json(['success'=>'Company Added Successfully']);
-   // }
    public function destroy($id)
     {
         Company::find($id)->delete();

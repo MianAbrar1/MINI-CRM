@@ -46,15 +46,6 @@ class EmployeeController extends Controller
         ]);
 
 return response()->json(['success'=>'Employee saved successfully.']);
-        //$employee = new Employee();
-    //$employee->first_name = $request->input('first_name');
-    //$employee->last_name = $request->input('last_name');
- //   $employee->company_name = $request->input('company_name');
-   // $employee->email = $request->input('email');
-   // $employee->phone = $request->input('phone');
-   // $employee->save();
-
-    //return response()->json(['res'=>'Employee added Successfully']);
        }
 
        public function edit($id)

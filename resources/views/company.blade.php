@@ -4,8 +4,10 @@
 @endsection
 
 @section('form')
-<h1 class="display-4 mb-20 text-blue">COMPANIES</h1>
-<a class="btn btn-success" href="javascript:void(0)" id="createNewCompany"> Create New Company</a>
+<center>
+    <h1 class="display-4 mb-20 text-blue">COMPANIES</h1>
+    <a class="btn btn-success" href="javascript:void(0)" id="createNewCompany"> Create New Company</a>
+</center>
 @endsection
 @section('table')
 <div class="container">
