@@ -7,6 +7,13 @@
 <center>
     <h1 class="display-4 mb-20 text-blue">EMPLOYEES</h1>
     <a class="btn btn-success" href="javascript:void(0)" id="createNewEmployee"> Add New Employee</a>
+    <br><br><br>
+        <label for="search"><i class="icon-search">search Employees by Company     </i></label><br>
+        <input class="table-filter" type="search" data-table="user_datatable" placeholder="Search...">
+      <!--  Table  -->
+      <div class="table-responsive">
+            <br>
+            <br>
 </center>
 @endsection
 @section('table')
@@ -17,11 +24,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>First_Name</th>
-                        <th>Last_Name</th>
-                        <th>Company_Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Company Name</th>
                         <th>Email</th>
-                        <th>Phone#</th>
+                        <th>Phone</th>
                         <th width="280pxx">Action</th>
                     </tr>
                 </thead>
@@ -144,6 +151,50 @@
 
         });
     </script>
+    <script>
+
+        (function(document) {
+            'use strict';
+            var LightTableFilter = (function(Arr) {
+                var _input;
+                function _onInputEvent(e) {
+                    _input = e.target;
+                var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+                Arr.forEach.call(tables, function(table) {
+                    Arr.forEach.call(table.tBodies, function(tbody) {
+                        Arr.forEach.call(tbody.rows, _filter);
+                    });
+                });
+            }
+            function _filter(row) {
+                var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+                row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+            }
+            return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('table-filter');
+                    Arr.forEach.call(inputs, function(input) {
+                        input.oninput = _onInputEvent;
+                    });
+                }
+            };
+        })(Array.prototype);
+
+        document.addEventListener('readystatechange', function() {
+            if (document.readyState === 'complete') {
+                LightTableFilter.init();
+            }
+        });
+    })(document);
+</script>
+<script>
+    function applyFilter() {
+        var companyName = $('#company_name_filter').val();
+
+        // Use DataTables API to apply the filter
+        $('.user_datatable').DataTable().ajax.url("{{ route('employees.index') }}?company_name=" + companyName).load();
+    }
+</script>
 @endsection
 @section('js2')
 <script type="text/javascript">
